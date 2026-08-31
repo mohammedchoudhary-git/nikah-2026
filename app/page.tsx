@@ -1,4 +1,23 @@
+"use client";
+import { useState } from "react";
+import { guests } from "../data/guests";
+
 export default function Home() {
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleCheck = () => {
+    const isGuest = guests.some(
+      (guest) => guest.toLowerCase() === name.trim().toLowerCase()
+    );
+
+    if (isGuest) {
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#fbf7ee] via-[#f7efdf] to-[#ead8b5] text-[#123c32]">
       {/* Soft background glow */}
@@ -77,6 +96,8 @@ export default function Home() {
               id="name"
               type="text"
               placeholder="Enter your name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               className="h-16 w-full rounded-2xl border border-[#c6a15b]/60 bg-[#fffdf8]/90 px-14 text-center font-serif text-lg text-[#123c32] shadow-[0_8px_30px_rgba(91,70,30,0.08)] outline-none placeholder:text-[#8b887f] focus:border-[#b58d45] focus:ring-4 focus:ring-[#c6a15b]/10"
             />
           </div>
@@ -84,6 +105,7 @@ export default function Home() {
           {/* Button */}
           <button
             type="button"
+            onClick={handleCheck}
             className="mt-4 flex h-16 w-full items-center justify-center gap-3 rounded-2xl border border-[#d9b86b] bg-[#123c32] px-6 font-serif text-lg text-[#fffdf8] shadow-[0_10px_30px_rgba(18,60,50,0.18)] transition duration-300 hover:bg-[#1e5547] active:scale-[0.99]"
           >
             <span className="text-2xl text-[#e2bf73]">⌕</span>
@@ -91,6 +113,18 @@ export default function Home() {
           </button>
         </div>
 
+
+        {status === "success" && (
+          <p className="mt-6 text-lg font-serif text-[#123c32]">
+            Welcome, {name}! 🎉
+          </p>
+        )}
+
+        {status === "error" && (
+          <p className="mt-6 text-lg font-serif text-[#8b3a3a]">
+            Hmm... I don't remember inviting you. 🤨
+          </p>
+        )}
         {/* Bottom message */}
         <div className="mt-12 pt-4">
           <p className="text-xs font-medium tracking-[0.25em] text-[#9a8967] uppercase sm:text-sm">
