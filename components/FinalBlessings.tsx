@@ -45,11 +45,10 @@ export default function FinalBlessings({
 
   return (
     <main
-      className={`${lora.className} relative min-h-screen overflow-hidden bg-[#f3f8f9] text-[#40596b] transition-all duration-1000 ${
-        visible
+      className={`${lora.className} relative min-h-screen overflow-hidden bg-[#f3f8f9] text-[#40596b] transition-all duration-1000 ${visible
           ? "translate-y-0 scale-100 opacity-100"
           : "translate-y-5 scale-[0.98] opacity-0"
-      }`}
+        }`}
     >
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -87,11 +86,10 @@ export default function FinalBlessings({
 
           {/* Heading */}
           <div
-            className={`transition-all duration-1000 ${
-              visible
+            className={`transition-all duration-1000 ${visible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
-            }`}
+              }`}
           >
             <p className="text-[14px] uppercase tracking-[0.32em] text-[#9b896c] sm:text-[15px]">
               With Love &amp; Dua
@@ -110,20 +108,16 @@ export default function FinalBlessings({
 
           {/* Heartfelt message */}
           <div
-            className={`mx-auto mt-12 max-w-lg transition-all duration-[1100ms] ${
-              showContent
+            className={`mx-auto mt-12 max-w-lg transition-all duration-[1100ms] ${showContent
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
-            }`}
+              }`}
           >
             <div className="rounded-[2rem] border border-[#c9a96e]/25 bg-[#fffaf1]/90 px-7 py-8 shadow-[0_20px_60px_rgba(80,95,105,0.06)] sm:px-10 sm:py-10">
 
               <p className="text-[19px] italic leading-9 text-[#526b7b] sm:text-[22px] sm:leading-10">
-                As we begin this beautiful new
-                <br className="hidden sm:block" />
-                chapter of our lives, your presence
-                <br className="hidden sm:block" />
-                and blessings mean a lot to us.
+                As we begin this beautiful new chapter of our lives, your presence and
+                blessings mean a lot to us.
               </p>
 
               <div className="mx-auto mt-7 flex items-center justify-center gap-3">
@@ -144,11 +138,10 @@ export default function FinalBlessings({
 
           {/* Family blessing */}
           <div
-            className={`mt-10 transition-all delay-300 duration-[1100ms] ${
-              showContent
+            className={`mt-10 transition-all delay-300 duration-[1100ms] ${showContent
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
-            }`}
+              }`}
           >
             <p className="text-[13px] uppercase tracking-[0.28em] text-[#9b896c] sm:text-[14px]">
               With the blessings of our families
@@ -175,11 +168,10 @@ export default function FinalBlessings({
 
           {/* Final heart */}
           <div
-            className={`mt-12 transition-all delay-500 duration-1000 ${
-              showContent
+            className={`mt-12 transition-all delay-500 duration-1000 ${showContent
                 ? "scale-100 opacity-100"
                 : "scale-75 opacity-0"
-            }`}
+              }`}
           >
             <div className="mx-auto flex items-center justify-center gap-4">
               <span className="h-px w-16 bg-[#c9a96e]/20 sm:w-20" />
@@ -197,11 +189,10 @@ export default function FinalBlessings({
             type="button"
             onClick={handleFinish}
             disabled={closing}
-            className={`group mx-auto mt-8 flex items-center gap-3 rounded-full border border-[#c9a96e]/40 bg-[#fffaf1]/90 px-7 py-3 text-[12px] uppercase tracking-[0.25em] text-[#526b7b] shadow-[0_10px_30px_rgba(80,95,105,0.06)] transition-all duration-700 hover:-translate-y-1 hover:border-[#c9a96e]/60 hover:bg-[#fffaf1] hover:shadow-[0_15px_40px_rgba(80,95,105,0.1)] active:scale-95 ${
-              showContent
+            className={`group mx-auto mt-8 flex items-center gap-3 rounded-full border border-[#c9a96e]/40 bg-[#fffaf1]/90 px-7 py-3 text-[12px] uppercase tracking-[0.25em] text-[#526b7b] shadow-[0_10px_30px_rgba(80,95,105,0.06)] transition-all duration-700 hover:-translate-y-1 hover:border-[#c9a96e]/60 hover:bg-[#fffaf1] hover:shadow-[0_15px_40px_rgba(80,95,105,0.1)] active:scale-95 ${showContent
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-5 opacity-0"
-            }`}
+              }`}
           >
             <span>Finish</span>
 
@@ -211,9 +202,8 @@ export default function FinalBlessings({
           </button>
 
           <p
-            className={`mt-4 text-xl text-[#c9a96e]/50 transition-opacity duration-700 ${
-              showContent ? "opacity-100" : "opacity-0"
-            }`}
+            className={`mt-4 text-xl text-[#c9a96e]/50 transition-opacity duration-700 ${showContent ? "opacity-100" : "opacity-0"
+              }`}
           >
             ♡
           </p>
@@ -222,17 +212,15 @@ export default function FinalBlessings({
 
       {/* Closing curtains */}
       <div
-        className={`pointer-events-none fixed inset-y-0 left-0 z-50 w-1/2 bg-[#eef5f7] transition-transform duration-[1800ms] ease-in-out ${
-          closing ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`pointer-events-none fixed inset-y-0 left-0 z-50 w-1/2 bg-[#eef5f7] transition-transform duration-[1800ms] ease-in-out ${closing ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="absolute right-0 top-0 h-full w-px bg-[#c9a96e]/30" />
       </div>
 
       <div
-        className={`pointer-events-none fixed inset-y-0 right-0 z-50 w-1/2 bg-[#eef5f7] transition-transform duration-[1800ms] ease-in-out ${
-          closing ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`pointer-events-none fixed inset-y-0 right-0 z-50 w-1/2 bg-[#eef5f7] transition-transform duration-[1800ms] ease-in-out ${closing ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="absolute left-0 top-0 h-full w-px bg-[#c9a96e]/30" />
       </div>
