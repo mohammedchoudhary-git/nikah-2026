@@ -10,6 +10,7 @@ const lora = Lora({
 });
 
 type CoupleRevealProps = {
+  onBack: () => void;
   onComplete: () => void;
 };
 
@@ -23,12 +24,15 @@ type Countdown = {
 const NIKAH_DATE = new Date("2026-11-11T00:00:00");
 
 export default function CoupleReveal({
+  onBack,
   onComplete,
 }: CoupleRevealProps) {
   const [visible, setVisible] = useState(false);
   const [showCouple, setShowCouple] = useState(false);
 
-  const [countdownRevealed, setCountdownRevealed] = useState(false);
+  const [countdownRevealed, setCountdownRevealed] =
+    useState(false);
+
   const [celebrationKey, setCelebrationKey] = useState(0);
 
   const [countdown, setCountdown] = useState<Countdown>({
@@ -37,6 +41,10 @@ export default function CoupleReveal({
     minutes: 0,
     seconds: 0,
   });
+
+  /* =========================================================
+     SCREEN ENTRANCE
+  ========================================================= */
 
   useEffect(() => {
     const screenTimer = setTimeout(() => {
@@ -52,6 +60,10 @@ export default function CoupleReveal({
       clearTimeout(coupleTimer);
     };
   }, []);
+
+  /* =========================================================
+     COUNTDOWN
+  ========================================================= */
 
   useEffect(() => {
     const calculateCountdown = () => {
@@ -107,6 +119,10 @@ export default function CoupleReveal({
     };
   }, []);
 
+  /* =========================================================
+     COUNTDOWN REVEAL
+  ========================================================= */
+
   const handleCountdownReveal = () => {
     if (countdownRevealed) return;
 
@@ -117,6 +133,22 @@ export default function CoupleReveal({
   const handleReplayCelebration = () => {
     setCelebrationKey((key) => key + 1);
   };
+
+  /* =========================================================
+     BACK → SCREEN 3
+  ========================================================= */
+
+  const handleBack = () => {
+    setVisible(false);
+
+    setTimeout(() => {
+      onBack();
+    }, 850);
+  };
+
+  /* =========================================================
+     CONTINUE → SCREEN 5
+  ========================================================= */
 
   const handleContinue = () => {
     setVisible(false);
@@ -132,101 +164,89 @@ export default function CoupleReveal({
 
   return (
     <main
-      className={`${lora.className} relative min-h-screen overflow-hidden bg-[#f3f8f9] text-[#40596b] transition-all duration-1000 ${
+      className={`${lora.className} relative min-h-screen overflow-hidden bg-[#090708] text-[#f5eee5] transition-all duration-1000 ${
         visible
           ? "translate-y-0 scale-100 opacity-100"
           : "translate-y-5 scale-[0.98] opacity-0"
       }`}
     >
-      {/* Background atmosphere */}
+      {/* =========================================================
+          BACKGROUND ATMOSPHERE
+      ========================================================= */}
+
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-[-190px] h-[430px] w-[430px] -translate-x-1/2 rounded-full bg-white/90 blur-[110px]" />
+        <div className="absolute left-1/2 top-[-190px] h-[430px] w-[430px] -translate-x-1/2 rounded-full bg-[#651b25]/45 blur-[110px]" />
 
-        <div className="absolute bottom-[-180px] left-[-100px] h-[400px] w-[400px] rounded-full bg-[#dcecf2]/80 blur-[110px]" />
+        <div className="absolute bottom-[-180px] left-[-100px] h-[400px] w-[400px] rounded-full bg-[#7c202d]/25 blur-[110px]" />
 
-        <div className="absolute bottom-[-160px] right-[-100px] h-[380px] w-[380px] rounded-full bg-[#f1e3d0]/75 blur-[110px]" />
+        <div className="absolute bottom-[-160px] right-[-100px] h-[380px] w-[380px] rounded-full bg-[#3d1118]/35 blur-[110px]" />
 
-        <div className="absolute left-1/2 top-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/50 blur-[100px]" />
+        <div className="absolute left-1/2 top-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8f2633]/10 blur-[100px]" />
       </div>
 
-      {/* Elegant border */}
-      <div className="pointer-events-none absolute inset-4 rounded-[2rem] border border-[#c9a96e]/20 sm:inset-6 md:inset-8" />
+      {/* =========================================================
+          BORDERS
+      ========================================================= */}
 
-      {/* Decorative details */}
-      <span className="pointer-events-none absolute left-[9%] top-[18%] text-sm text-[#c9a96e]/30">
+      <div className="pointer-events-none absolute inset-4 rounded-[2rem] border border-[#c9a96e]/35 sm:inset-6 md:inset-8" />
+
+      <div className="pointer-events-none absolute inset-7 rounded-[1.7rem] border border-[#c9a96e]/10 sm:inset-9 md:inset-12" />
+
+      {/* =========================================================
+          DECORATIVE DETAILS
+      ========================================================= */}
+
+      <span className="pointer-events-none absolute left-[9%] top-[18%] text-sm text-[#c9a96e]/50">
         ✦
       </span>
 
-      <span className="pointer-events-none absolute right-[9%] top-[27%] text-xs text-[#c9a96e]/25">
+      <span className="pointer-events-none absolute right-[9%] top-[27%] text-xs text-[#c9a96e]/35">
         ♡
       </span>
 
-      <span className="pointer-events-none absolute bottom-[25%] left-[10%] text-xs text-[#c9a96e]/25">
+      <span className="pointer-events-none absolute bottom-[25%] left-[10%] text-xs text-[#c9a96e]/40">
         ✦
       </span>
 
-      <span className="pointer-events-none absolute bottom-[15%] right-[9%] text-sm text-[#c9a96e]/30">
+      <span className="pointer-events-none absolute bottom-[15%] right-[9%] text-sm text-[#c9a96e]/35">
         ♡
       </span>
 
-      {/* Celebration */}
+      {/* =========================================================
+          CELEBRATION
+      ========================================================= */}
+
       {countdownRevealed && (
         <div
           key={celebrationKey}
           className="pointer-events-none fixed inset-0 z-40 overflow-hidden"
         >
-          {/* Fireworks */}
-          <span className="firework firework-one">
-            ✦
-          </span>
+          <span className="firework firework-one">✦</span>
+          <span className="firework firework-two">✦</span>
+          <span className="firework firework-three">✦</span>
 
-          <span className="firework firework-two">
-            ✦
-          </span>
-
-          <span className="firework firework-three">
-            ✦
-          </span>
-
-          {/* Confetti */}
-          <span className="confetti confetti-1">
-            ✦
-          </span>
-
-          <span className="confetti confetti-2">
-            ♡
-          </span>
-
-          <span className="confetti confetti-3">
-            ✦
-          </span>
-
-          <span className="confetti confetti-4">
-            ♡
-          </span>
-
-          <span className="confetti confetti-5">
-            ✦
-          </span>
-
-          <span className="confetti confetti-6">
-            ♡
-          </span>
-
-          <span className="confetti confetti-7">
-            ✦
-          </span>
-
-          <span className="confetti confetti-8">
-            ♡
-          </span>
+          <span className="confetti confetti-1">✦</span>
+          <span className="confetti confetti-2">♡</span>
+          <span className="confetti confetti-3">✦</span>
+          <span className="confetti confetti-4">♡</span>
+          <span className="confetti confetti-5">✦</span>
+          <span className="confetti confetti-6">♡</span>
+          <span className="confetti confetti-7">✦</span>
+          <span className="confetti confetti-8">♡</span>
         </div>
       )}
+
+      {/* =========================================================
+          MAIN CONTENT
+      ========================================================= */}
 
       <section className="relative z-10 flex min-h-screen items-center justify-center px-6 py-14 sm:px-8 sm:py-16">
         <div className="w-full max-w-2xl text-center">
 
-          {/* Heading */}
+          {/* =====================================================
+              HEADING
+          ===================================================== */}
+
           <div
             className={`transition-all duration-1000 ${
               visible
@@ -234,7 +254,7 @@ export default function CoupleReveal({
                 : "translate-y-4 opacity-0"
             }`}
           >
-            <p className="text-[14px] uppercase tracking-[0.32em] text-[#9b896c] sm:text-[15px]">
+            <p className="text-[14px] uppercase tracking-[0.32em] text-[#c9a96e]/85 sm:text-[15px]">
               A New Chapter
             </p>
 
@@ -249,10 +269,14 @@ export default function CoupleReveal({
             </div>
           </div>
 
-          {/* Couple */}
+          {/* =====================================================
+              COUPLE NAMES
+          ===================================================== */}
+
           <div className="mt-10">
 
             {/* Mohammed */}
+
             <div
               className={`transition-all duration-[1100ms] ${
                 showCouple
@@ -260,11 +284,11 @@ export default function CoupleReveal({
                   : "translate-y-8 opacity-0"
               }`}
             >
-              <p className="text-[40px] font-medium tracking-wide text-[#40596b] sm:text-[48px]">
+              <p className="text-[40px] font-medium tracking-wide text-[#f5eee5] sm:text-[48px]">
                 Mohammed
               </p>
 
-              <p className="mx-auto mt-3 max-w-sm text-[14px] leading-6 text-[#71808b] sm:text-[15px]">
+              <p className="mx-auto mt-3 max-w-sm text-[14px] leading-6 text-[#a9958c] sm:text-[15px]">
                 S/O Nizamuddin AbdulRazzak
                 <br />
                 Choudhary
@@ -272,6 +296,7 @@ export default function CoupleReveal({
             </div>
 
             {/* Heart divider */}
+
             <div
               className={`my-7 flex items-center justify-center gap-4 transition-all delay-200 duration-1000 ${
                 showCouple
@@ -289,6 +314,7 @@ export default function CoupleReveal({
             </div>
 
             {/* Bushra */}
+
             <div
               className={`transition-all delay-300 duration-[1100ms] ${
                 showCouple
@@ -296,11 +322,11 @@ export default function CoupleReveal({
                   : "translate-y-8 opacity-0"
               }`}
             >
-              <p className="text-[40px] font-medium tracking-wide text-[#40596b] sm:text-[48px]">
+              <p className="text-[40px] font-medium tracking-wide text-[#f5eee5] sm:text-[48px]">
                 Bushra
               </p>
 
-              <p className="mx-auto mt-3 max-w-sm text-[14px] leading-6 text-[#71808b] sm:text-[15px]">
+              <p className="mx-auto mt-3 max-w-sm text-[14px] leading-6 text-[#a9958c] sm:text-[15px]">
                 D/O Mo. Anas Ahmed
                 <br />
                 Nadoliya
@@ -308,7 +334,10 @@ export default function CoupleReveal({
             </div>
           </div>
 
-          {/* Couple message */}
+          {/* =====================================================
+              HEARTFELT MESSAGE
+          ===================================================== */}
+
           <div
             className={`mx-auto mt-9 max-w-lg transition-all delay-500 duration-1000 ${
               showCouple
@@ -316,8 +345,9 @@ export default function CoupleReveal({
                 : "translate-y-6 opacity-0"
             }`}
           >
-            <div className="rounded-[2rem] border border-[#c9a96e]/25 bg-[#fffaf1]/90 px-7 py-7 shadow-[0_20px_60px_rgba(80,95,105,0.06)] sm:px-10 sm:py-8">
-              <p className="text-[21px] italic leading-9 text-[#526b7b] sm:text-[24px] sm:leading-10">
+            <div className="rounded-[2rem] border border-[#c9a96e]/30 bg-[#130b0d]/90 px-7 py-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:px-10 sm:py-8">
+
+              <p className="text-[21px] italic leading-9 text-[#c8b6b0] sm:text-[24px] sm:leading-10">
                 Two hearts, one beautiful journey,
                 <br />
                 and a lifetime to begin.
@@ -333,13 +363,16 @@ export default function CoupleReveal({
                 <span className="h-px w-8 bg-[#c9a96e]/25" />
               </div>
 
-              <p className="mt-4 text-[13px] uppercase tracking-[0.2em] text-[#9b896c]">
+              <p className="mt-4 text-[13px] uppercase tracking-[0.2em] text-[#c9a96e]/80">
                 A journey written with love &amp; dua
               </p>
             </div>
           </div>
 
-          {/* Countdown */}
+          {/* =====================================================
+              COUNTDOWN
+          ===================================================== */}
+
           <div
             className={`mt-9 transition-all delay-700 duration-1000 ${
               showCouple
@@ -347,33 +380,31 @@ export default function CoupleReveal({
                 : "translate-y-6 opacity-0"
             }`}
           >
-            <p className="text-[13px] uppercase tracking-[0.28em] text-[#9b896c] sm:text-[14px]">
+            <p className="text-[13px] uppercase tracking-[0.28em] text-[#c9a96e]/85 sm:text-[14px]">
               Our Nikah In
             </p>
 
-            {/* Hidden reveal card */}
             {!countdownRevealed ? (
               <button
                 type="button"
                 onClick={handleCountdownReveal}
-                className="group relative mx-auto mt-5 block w-full max-w-md overflow-hidden rounded-[2rem] border border-[#c9a96e]/35 bg-[#fffaf1]/95 px-6 py-9 shadow-[0_20px_60px_rgba(80,95,105,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_70px_rgba(80,95,105,0.12)] active:scale-[0.98]"
+                className="group relative mx-auto mt-5 block w-full max-w-md overflow-hidden rounded-[2rem] border border-[#c9a96e]/35 bg-[#130b0d]/90 px-6 py-9 shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-all duration-500 hover:-translate-y-1 hover:border-[#c9a96e]/55 hover:shadow-[0_25px_70px_rgba(0,0,0,0.45)] active:scale-[0.98]"
               >
-                {/* Shimmer */}
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 transition-all duration-1000 group-hover:translate-x-full group-hover:opacity-100" />
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-1000 group-hover:translate-x-full group-hover:opacity-100" />
 
                 <div className="relative z-10">
 
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#c9a96e]/35 bg-[#f8efe0] shadow-[0_8px_25px_rgba(201,169,110,0.15)] transition-transform duration-500 group-hover:scale-110">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#c9a96e]/35 bg-[#321118] shadow-[0_8px_25px_rgba(201,169,110,0.12)] transition-transform duration-500 group-hover:scale-110">
                     <span className="text-[28px] text-[#c9a96e]">
                       ♡
                     </span>
                   </div>
 
-                  <p className="mt-6 text-[17px] uppercase tracking-[0.25em] text-[#40596b] sm:text-[19px]">
+                  <p className="mt-6 text-[17px] uppercase tracking-[0.25em] text-[#f5eee5] sm:text-[19px]">
                     Press to Reveal
                   </p>
 
-                  <p className="mt-3 text-[14px] italic text-[#71808b]">
+                  <p className="mt-3 text-[14px] italic text-[#a9958c]">
                     A little surprise awaits...
                   </p>
 
@@ -389,15 +420,12 @@ export default function CoupleReveal({
                 </div>
               </button>
             ) : (
-              /* Revealed countdown */
               <div className="relative mx-auto mt-5 max-w-md">
 
-                {/* Glow */}
-                <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[#f1e3d0]/50 blur-2xl" />
+                <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[#651b25]/20 blur-2xl" />
 
-                <div className="relative rounded-[2rem] border border-[#c9a96e]/40 bg-[#fffaf1]/95 px-4 py-6 shadow-[0_25px_80px_rgba(80,95,105,0.12)] sm:px-5 sm:py-7">
+                <div className="relative rounded-[2rem] border border-[#c9a96e]/40 bg-[#130b0d]/95 px-4 py-6 shadow-[0_25px_80px_rgba(0,0,0,0.45)] sm:px-5 sm:py-7">
 
-                  {/* Title */}
                   <div className="mb-5 flex items-center justify-center gap-3">
                     <span className="h-px w-10 bg-[#c9a96e]/25" />
 
@@ -405,67 +433,65 @@ export default function CoupleReveal({
                       ✦
                     </span>
 
-                    <span className="text-[12px] uppercase tracking-[0.22em] text-[#9b896c]">
+                    <span className="text-[12px] uppercase tracking-[0.22em] text-[#c9a96e]/80">
                       Until Our Nikah
                     </span>
 
                     <span className="h-px w-10 bg-[#c9a96e]/25" />
                   </div>
 
-                  {/* Countdown numbers */}
                   <div className="grid grid-cols-4 gap-2 sm:gap-3">
 
-                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#f8f3e9]/80 px-2 py-4 sm:px-3 sm:py-5">
-                      <p className="text-[25px] font-medium text-[#40596b] sm:text-[31px]">
+                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#211014]/80 px-2 py-4 sm:px-3 sm:py-5">
+                      <p className="text-[25px] font-medium text-[#f5eee5] sm:text-[31px]">
                         {formatNumber(countdown.days)}
                       </p>
 
-                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#9b896c] sm:text-[10px]">
+                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#a9958c] sm:text-[10px]">
                         Days
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#f8f3e9]/80 px-2 py-4 sm:px-3 sm:py-5">
-                      <p className="text-[25px] font-medium text-[#40596b] sm:text-[31px]">
+                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#211014]/80 px-2 py-4 sm:px-3 sm:py-5">
+                      <p className="text-[25px] font-medium text-[#f5eee5] sm:text-[31px]">
                         {formatNumber(countdown.hours)}
                       </p>
 
-                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#9b896c] sm:text-[10px]">
+                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#a9958c] sm:text-[10px]">
                         Hours
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#f8f3e9]/80 px-2 py-4 sm:px-3 sm:py-5">
-                      <p className="text-[25px] font-medium text-[#40596b] sm:text-[31px]">
+                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#211014]/80 px-2 py-4 sm:px-3 sm:py-5">
+                      <p className="text-[25px] font-medium text-[#f5eee5] sm:text-[31px]">
                         {formatNumber(countdown.minutes)}
                       </p>
 
-                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#9b896c] sm:text-[10px]">
+                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#a9958c] sm:text-[10px]">
                         Minutes
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#f8f3e9]/80 px-2 py-4 sm:px-3 sm:py-5">
-                      <p className="text-[25px] font-medium text-[#40596b] sm:text-[31px]">
+                    <div className="rounded-2xl border border-[#c9a96e]/25 bg-[#211014]/80 px-2 py-4 sm:px-3 sm:py-5">
+                      <p className="text-[25px] font-medium text-[#f5eee5] sm:text-[31px]">
                         {formatNumber(countdown.seconds)}
                       </p>
 
-                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#9b896c] sm:text-[10px]">
+                      <p className="mt-1 text-[9px] uppercase tracking-[0.15em] text-[#a9958c] sm:text-[10px]">
                         Seconds
                       </p>
                     </div>
+
                   </div>
 
-                  {/* Date */}
-                  <p className="mt-5 text-[14px] italic text-[#71808b]">
+                  <p className="mt-5 text-[14px] italic text-[#a9958c]">
                     Until 11 November 2026
                   </p>
 
-                  {/* Replay celebration */}
                   <button
                     type="button"
                     onClick={handleReplayCelebration}
-                    className="group mx-auto mt-5 flex items-center gap-2 rounded-full border border-[#c9a96e]/25 bg-[#f8f3e9]/70 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-[#9b896c] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/50 hover:bg-[#f8f3e9] active:scale-95"
+                    className="group mx-auto mt-5 flex items-center gap-2 rounded-full border border-[#c9a96e]/25 bg-[#211014]/70 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-[#a9958c] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/50 hover:bg-[#2a1318] active:scale-95"
                   >
                     <span className="text-[#c9a96e] transition-transform duration-500 group-hover:rotate-180">
                       ✦
@@ -473,27 +499,53 @@ export default function CoupleReveal({
 
                     <span>Replay</span>
                   </button>
+
                 </div>
               </div>
             )}
           </div>
 
-          {/* Continue button */}
-          <button
-            type="button"
-            onClick={handleContinue}
-            className={`group mx-auto mt-8 flex items-center gap-3 rounded-full border border-[#c9a96e]/40 bg-[#fffaf1]/90 px-7 py-3 text-[12px] uppercase tracking-[0.25em] text-[#526b7b] shadow-[0_10px_30px_rgba(80,95,105,0.06)] transition-all duration-700 hover:-translate-y-1 hover:border-[#c9a96e]/60 hover:bg-[#fffaf1] hover:shadow-[0_15px_40px_rgba(80,95,105,0.1)] active:scale-95 ${
+          {/* =====================================================
+              NAVIGATION
+          ===================================================== */}
+
+          <div
+            className={`mx-auto mt-8 flex items-center justify-center gap-3 transition-all duration-700 ${
               showCouple
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-5 opacity-0"
             }`}
           >
-            <span>Continue</span>
 
-            <span className="text-[#c9a96e] transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </button>
+            {/* BACK BUTTON */}
+
+            <button
+              type="button"
+              onClick={handleBack}
+              className="group flex items-center gap-2 rounded-full border border-[#c9a96e]/30 bg-[#130b0d]/80 px-5 py-3 text-[11px] uppercase tracking-[0.2em] text-[#a9958c] transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a96e]/55 hover:bg-[#1a0d10] hover:text-[#f5eee5] active:scale-95 sm:px-6"
+            >
+              <span className="transition-transform duration-300 group-hover:-translate-x-1">
+                ←
+              </span>
+
+              <span>Back</span>
+            </button>
+
+            {/* CONTINUE BUTTON */}
+
+            <button
+              type="button"
+              onClick={handleContinue}
+              className="group flex items-center gap-2 rounded-full border border-[#c9a96e]/45 bg-[#130b0d]/90 px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-[#c8b6b0] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a96e]/70 hover:bg-[#1a0d10] hover:text-[#f5eee5] hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)] active:scale-95 sm:px-7"
+            >
+              <span>Continue</span>
+
+              <span className="text-[#c9a96e] transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
+
+          </div>
 
           <p
             className={`mt-4 text-xl text-[#c9a96e]/50 transition-opacity duration-700 ${
@@ -505,7 +557,10 @@ export default function CoupleReveal({
         </div>
       </section>
 
-      {/* Celebration animation */}
+      {/* =========================================================
+          CELEBRATION ANIMATIONS
+      ========================================================= */}
+
       <style jsx>{`
         .firework {
           position: absolute;
