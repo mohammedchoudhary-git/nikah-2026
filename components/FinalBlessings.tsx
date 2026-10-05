@@ -71,11 +71,10 @@ export default function FinalBlessings({
 
   return (
     <main
-      className={`${lora.className} relative min-h-screen overflow-hidden bg-[#090708] text-[#f5eee5] transition-all duration-1000 ${
-        visible
-          ? "translate-y-0 scale-100 opacity-100"
-          : "translate-y-5 scale-[0.98] opacity-0"
-      }`}
+      className={`${lora.className} relative min-h-screen overflow-hidden bg-[#090708] text-[#f5eee5] transition-all duration-1000 ${visible
+        ? "translate-y-0 scale-100 opacity-100"
+        : "translate-y-5 scale-[0.98] opacity-0"
+        }`}
     >
       {/* =========================================================
           BACKGROUND ATMOSPHERE
@@ -135,11 +134,10 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`transition-all duration-1000 ${
-              visible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-4 opacity-0"
-            }`}
+            className={`transition-all duration-1000 ${visible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-4 opacity-0"
+              }`}
           >
             <p className="text-[13px] uppercase tracking-[0.3em] text-[#c9a96e]/85 sm:text-[15px]">
               With Love &amp; Dua
@@ -161,21 +159,16 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mx-auto mt-7 max-w-lg transition-all duration-[1100ms] sm:mt-12 ${
-              showContent
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
+            className={`mx-auto mt-7 max-w-lg transition-all duration-[1100ms] sm:mt-12 ${showContent
+              ? "translate-y-0 opacity-100"
+              : "translate-y-8 opacity-0"
+              }`}
           >
             <div className="rounded-[1.7rem] border border-[#c9a96e]/30 bg-[#130b0d]/90 px-6 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:rounded-[2rem] sm:px-10 sm:py-10">
 
-              <p className="text-[18px] italic leading-7 text-[#c8b6b0] sm:text-[22px] sm:leading-10">
-                As we begin this beautiful new
-                <br className="hidden sm:block" />
-                chapter of our lives, your presence
-                <br className="hidden sm:block" />
-                and blessings mean a lot to us.
-              </p>
+              <p className="mx-auto max-w-[18rem] text-[18px] italic leading-8 text-[#c8b6b0] text-balance sm:max-w-lg sm:text-[22px] sm:leading-10">
+  As we begin this beautiful new chapter of our lives, your presence and blessings mean a lot to us.
+</p>
 
               <div className="mx-auto mt-5 flex items-center justify-center gap-3 sm:mt-7">
                 <span className="h-px w-8 bg-[#c9a96e]/25" />
@@ -198,11 +191,10 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mt-7 transition-all delay-300 duration-[1100ms] sm:mt-10 ${
-              showContent
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
+            className={`mt-7 transition-all delay-300 duration-[1100ms] sm:mt-10 ${showContent
+              ? "translate-y-0 opacity-100"
+              : "translate-y-8 opacity-0"
+              }`}
           >
             <p className="text-[12px] uppercase tracking-[0.25em] text-[#c9a96e]/80 sm:text-[14px] sm:tracking-[0.28em]">
               With the blessings of our families
@@ -232,11 +224,10 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mt-7 transition-all delay-500 duration-1000 sm:mt-12 ${
-              showContent
-                ? "scale-100 opacity-100"
-                : "scale-75 opacity-0"
-            }`}
+            className={`mt-7 transition-all delay-500 duration-1000 sm:mt-12 ${showContent
+              ? "scale-100 opacity-100"
+              : "scale-75 opacity-0"
+              }`}
           >
             <div className="mx-auto flex items-center justify-center gap-4">
               <span className="h-px w-14 bg-[#c9a96e]/20 sm:w-20" />
@@ -254,11 +245,10 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mx-auto mt-6 flex items-center justify-center gap-3 transition-all duration-700 sm:mt-8 ${
-              showContent
-                ? "translate-y-0 opacity-100"
-                : "pointer-events-none translate-y-5 opacity-0"
-            }`}
+            className={`mx-auto mt-6 flex items-center justify-center gap-3 transition-all duration-700 sm:mt-8 ${showContent
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none translate-y-5 opacity-0"
+              }`}
           >
 
             {/* BACK */}
@@ -294,9 +284,8 @@ export default function FinalBlessings({
           </div>
 
           <p
-            className={`mt-3 text-lg text-[#c9a96e]/45 transition-opacity duration-700 sm:mt-4 ${
-              showContent ? "opacity-100" : "opacity-0"
-            }`}
+            className={`mt-3 text-lg text-[#c9a96e]/45 transition-opacity duration-700 sm:mt-4 ${showContent ? "opacity-100" : "opacity-0"
+              }`}
           >
             ♡
           </p>
@@ -309,9 +298,8 @@ export default function FinalBlessings({
       ========================================================= */}
 
       <div
-        className={`pointer-events-none fixed inset-y-0 left-0 z-50 w-1/2 bg-[#090708] transition-transform duration-[1800ms] ease-in-out ${
-          closing ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`pointer-events-none fixed inset-y-0 left-0 z-50 w-1/2 bg-[#090708] transition-transform duration-[1800ms] ease-in-out ${closing ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="absolute right-0 top-0 h-full w-px bg-[#c9a96e]/35" />
 
@@ -319,9 +307,8 @@ export default function FinalBlessings({
       </div>
 
       <div
-        className={`pointer-events-none fixed inset-y-0 right-0 z-50 w-1/2 bg-[#090708] transition-transform duration-[1800ms] ease-in-out ${
-          closing ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`pointer-events-none fixed inset-y-0 right-0 z-50 w-1/2 bg-[#090708] transition-transform duration-[1800ms] ease-in-out ${closing ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="absolute left-0 top-0 h-full w-px bg-[#c9a96e]/35" />
 
