@@ -127,7 +127,7 @@ export default function FinalBlessings({
           MAIN CONTENT
       ========================================================= */}
 
-      <section className="relative z-10 flex min-h-screen items-center justify-center px-5 py-10 sm:px-8 sm:py-14">
+      <section className="relative z-10 flex min-h-screen items-center justify-center px-5 py-8 sm:px-8 sm:py-14">
         <div className="w-full max-w-2xl text-center">
 
           {/* =====================================================
@@ -161,15 +161,15 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mx-auto mt-9 max-w-lg transition-all duration-[1100ms] sm:mt-12 ${
+            className={`mx-auto mt-7 max-w-lg transition-all duration-[1100ms] sm:mt-12 ${
               showContent
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
             }`}
           >
-            <div className="rounded-[1.7rem] border border-[#c9a96e]/30 bg-[#130b0d]/90 px-6 py-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:rounded-[2rem] sm:px-10 sm:py-10">
+            <div className="rounded-[1.7rem] border border-[#c9a96e]/30 bg-[#130b0d]/90 px-6 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:rounded-[2rem] sm:px-10 sm:py-10">
 
-              <p className="text-[18px] italic leading-8 text-[#c8b6b0] sm:text-[22px] sm:leading-10">
+              <p className="text-[18px] italic leading-7 text-[#c8b6b0] sm:text-[22px] sm:leading-10">
                 As we begin this beautiful new
                 <br className="hidden sm:block" />
                 chapter of our lives, your presence
@@ -177,7 +177,7 @@ export default function FinalBlessings({
                 and blessings mean a lot to us.
               </p>
 
-              <div className="mx-auto mt-6 flex items-center justify-center gap-3 sm:mt-7">
+              <div className="mx-auto mt-5 flex items-center justify-center gap-3 sm:mt-7">
                 <span className="h-px w-8 bg-[#c9a96e]/25" />
 
                 <span className="text-[13px] text-[#c9a96e]">
@@ -187,7 +187,7 @@ export default function FinalBlessings({
                 <span className="h-px w-8 bg-[#c9a96e]/25" />
               </div>
 
-              <p className="mt-5 text-[16px] font-medium text-[#f5eee5] sm:mt-6 sm:text-[19px]">
+              <p className="mt-4 text-[16px] font-medium text-[#f5eee5] sm:mt-6 sm:text-[19px]">
                 Please keep us in your duas
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mt-8 transition-all delay-300 duration-[1100ms] sm:mt-10 ${
+            className={`mt-7 transition-all delay-300 duration-[1100ms] sm:mt-10 ${
               showContent
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
@@ -232,7 +232,7 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mt-9 transition-all delay-500 duration-1000 sm:mt-12 ${
+            className={`mt-7 transition-all delay-500 duration-1000 sm:mt-12 ${
               showContent
                 ? "scale-100 opacity-100"
                 : "scale-75 opacity-0"
@@ -254,7 +254,7 @@ export default function FinalBlessings({
           ===================================================== */}
 
           <div
-            className={`mx-auto mt-7 flex items-center justify-center gap-3 transition-all duration-700 sm:mt-8 ${
+            className={`mx-auto mt-6 flex items-center justify-center gap-3 transition-all duration-700 sm:mt-8 ${
               showContent
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-5 opacity-0"
