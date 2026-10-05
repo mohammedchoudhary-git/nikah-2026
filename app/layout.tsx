@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mohammed & Bushra | Wedding Invitation",
+  title: "Wedding Invitation",
 
   description:
     "You are warmly invited to celebrate the Nikah of Mohammed & Bushra. A beautiful beginning written with love and dua.",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   ),
 
   openGraph: {
-    title: "Mohammed & Bushra | Wedding Invitation",
+    title: "Wedding Invitation",
 
     description:
       "Join us as we begin this beautiful new chapter with love, family and dua.",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Mohammed & Bushra | Wedding Invitation",
+    title: "Wedding Invitation",
 
     description:
       "A beautiful beginning written with love and dua.",
