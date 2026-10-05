@@ -88,7 +88,7 @@ const MusicPlayer = forwardRef<MusicPlayerHandle>(function MusicPlayer(
     <>
       <audio
         ref={audioRef}
-        src="/music/ya_tab_tab_ringtone.mp3"
+        src="/music/allah_hu_allah.mp3"
         preload="auto"
       />
 
