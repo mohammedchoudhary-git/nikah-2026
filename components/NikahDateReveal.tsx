@@ -308,7 +308,7 @@ export default function NikahDateReveal({
 
               <div className="mt-4 sm:mt-5">
                 <p className="text-[18px] font-medium text-[#f5eee5] sm:text-[21px]">
-                  Backyard of my house
+                  Meta
                 </p>
               </div>
             </div>
